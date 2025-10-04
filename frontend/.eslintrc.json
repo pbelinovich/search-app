@@ -1,0 +1,18 @@
+{
+  "extends": ["./configs/.eslintrc.json"],
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "rules": {
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "no-restricted-imports": [
+      "error",
+      "path",
+      "fs",
+      "http",
+      "https",
+      "worker_threads"
+    ]
+  }
+}

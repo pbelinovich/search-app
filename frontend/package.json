@@ -1,0 +1,42 @@
+{
+  "name": "input-test-task-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --progress",
+    "lint": "eslint ./src",
+    "prettier": "prettier --config ./.prettierrc.js --write \"./src/**/*.{ts,tsx,css,scss,sass}\" \"!./src/**/*.d.ts\"",
+    "build": "cross-env NODE_ENV=PRODUCTION META_MODE=none webpack --progress --config=webpack.config.js"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.21.3",
+    "@babel/preset-env": "7.20.2",
+    "@babel/preset-typescript": "7.21.0",
+    "@babel/runtime": "^7.28.3",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@typescript-eslint/eslint-plugin": "5.57.0",
+    "@typescript-eslint/parser": "5.57.0",
+    "babel-loader": "9.1.2",
+    "cross-env": "7.0.3",
+    "css-loader": "6.7.3",
+    "eslint": "8.37.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "html-webpack-plugin": "5.5.3",
+    "mini-css-extract-plugin": "2.7.5",
+    "prettier": "2.8.7",
+    "style-loader": "^4.0.0",
+    "typescript": "5.0.2",
+    "webpack": "^5.101.3",
+    "webpack-cli": "5.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "author": "pbelinovich",
+  "license": "MIT"
+}
