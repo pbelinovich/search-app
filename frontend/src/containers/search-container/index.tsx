@@ -27,6 +27,7 @@ export const SearchContainer: React.FC<ISearchContainerProps> = ({ mode, delays 
     error: null,
   })
 
+  const delaysRef = useRef(delays)
   const delayCounterRef = useRef(0)
 
   const debouncedQuery = useDebounce(inputValue, 400)
@@ -46,7 +47,7 @@ export const SearchContainer: React.FC<ISearchContainerProps> = ({ mode, delays 
 
       updateState({ isLoading: true, isDropdownOpen: true, error: null })
 
-      const delay = delays.length > 0 ? delays[delayCounterRef.current % delays.length] : undefined
+      const delay = delaysRef.current.length > 0 ? delaysRef.current[delayCounterRef.current % delaysRef.current.length] : undefined
       const result = await api.search.execute({ query: searchQuery, delay })
 
       if (result.kind === 'success') {
@@ -55,7 +56,7 @@ export const SearchContainer: React.FC<ISearchContainerProps> = ({ mode, delays 
         updateState({ data: [], isLoading: false, error: result.message })
       }
     },
-    [delays, updateState]
+    [updateState]
   )
 
   useEffect(() => setInputValue(query), [query])
@@ -74,6 +75,10 @@ export const SearchContainer: React.FC<ISearchContainerProps> = ({ mode, delays 
     setQuery(searchTrigger)
     performSearch(searchTrigger)
   }, [searchTrigger, performSearch, setQuery, updateState])
+
+  useEffect(() => {
+    delaysRef.current = delays
+  }, [delays])
 
   const handleInputChange = (value: string) => {
     setInputValue(value)
